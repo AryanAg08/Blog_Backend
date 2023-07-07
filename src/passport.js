@@ -13,4 +13,12 @@ passport.use(
             callback(null, profile);
         }
     )
-)
+);
+
+passport.serializeUser((User, done) => {
+    done(null, User);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
