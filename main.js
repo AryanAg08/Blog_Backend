@@ -1,19 +1,34 @@
 require("dotenv").config();
 
-
 const express = require("express");
+const session = require("express-session");
 const cors = require("cors");
 const routes = require("./src/Routes");
 const PORT = process.env.PORT || 5001;
 const path = require("path");
-const mongo = require("mongoose");
 const cookiesession = require("cookie-session");
 const passport = require("passport");
+const mongoose = require("mongoose");
 
 const app = express();
 
-app.use(cors());
+mongoose.connect(process.env.mongo, {
+    keepAlive: true,
+}).then(() => {
+    console.log("connected to mongo!!");
+});
+
+// app.use(cors());
 app.use(express.json());
+
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+      //  methods: "GET,POST,PUT,DELETE",
+        credentials: true,
+        //optionsSuccessStatus: 200,
+    })
+);
 
 app.use(
     cookiesession({
@@ -23,17 +38,13 @@ app.use(
     })
 )
 
-app.use("/", routes)
+
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(
-    cors({
-        origin: "http://localhost:5001",
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true,
-    })
-);
+app.use("/", routes);
+
+
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}!!`));
