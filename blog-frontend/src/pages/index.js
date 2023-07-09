@@ -1,5 +1,6 @@
 import react from "react";
 import { getUserdetailsGoogle } from "../utils/googleAuth";
+import { getUserdetailsDiscord } from "../utils/discordAuth";
 
 export function Dashboard({
     history
@@ -23,11 +24,24 @@ const [user, setUser] = react.useState({
            // history.push("/");
             setLoding(false);
         });
-    }, [] )
+    }, [] );
+
+    react.useEffect( () => {
+        getUserdetailsDiscord()
+        .then(( { data }) => {
+            console.log(data);
+            setUser(data);
+            setLoding(false);
+        }).catch ((err) => {
+            setLoding(false);
+        });
+    }, [] );
 
     const name = user.name;
     const Email = user.email;
     const Img = user.picture;
+
+    
 
     return !loading && (
         <>

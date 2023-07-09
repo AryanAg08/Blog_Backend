@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/index";
+import { Landing } from "./pages/Landing";
 
 function App() {
   return (
 
     <div>
      <Routes>
+      <Route exact path="/" element={<Landing/>} />
       <Route exact path="/dashboard/:id" element={<Dashboard/>} />
      </Routes>
     

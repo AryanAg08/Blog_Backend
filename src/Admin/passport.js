@@ -1,6 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
-const Guser = require("./Models/1.GoogleAuth")
+const Guser = require("../Models/1.GoogleAuth")
 
 
 passport.serializeUser((user, done) => {
