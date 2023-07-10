@@ -23,6 +23,7 @@ passport.use(
         clientSecret: process.env.Client_secret,
         callbackURL: "/google/callback",
         scope: ["profile", "email"],
+        //  passReqToCallback: true,
     }, async (accessToken, refreshToken, profile, done) => {
         const { sub, name, picture, email } = profile._json;
         console.log( sub, name, picture, email);
@@ -37,7 +38,6 @@ passport.use(
                 new: true,
             });
             if ( finduser ) {
-                console.log(`user was found!!`);
                 return done(null, finduser);
             } else {
                 const newUser = await Guser.create({
@@ -49,7 +49,6 @@ passport.use(
                 return done(null, newUser);
             }
         } catch (err) {
-            console.log(err);
             return done(err, null);
         }
     })

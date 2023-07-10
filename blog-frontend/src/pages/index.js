@@ -37,11 +37,12 @@ const [user, setUser] = react.useState({
         });
     }, [] );
 
+
     const name = user.name;
     const Email = user.email;
     const Img = user.picture;
-
-    
+    const Id = user.id
+    const linkkk = "/" + Id + "/blog-create";
 
     return !loading && (
         <>
@@ -49,6 +50,8 @@ const [user, setUser] = react.useState({
          <h1>Hello {name}</h1>
          <h1>Email: {Email}</h1>
          <h1>Img: {Img}</h1>
+
+         <a href= {linkkk} ><button>Create My Post</button></a>
 
         </>
     );

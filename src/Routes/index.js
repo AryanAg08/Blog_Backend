@@ -13,12 +13,26 @@ router.get("/home", async (req, res) => {
 router.get("/google", passport.authenticate("google"));
 
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
-     // res.send("Hello hooman"); 
-   //  console.log(req.user);
     res.redirect(`http://localhost:3000/dashboard/${req.user.id}`);
 });
 
-router.get('/user/googleAuth', (req, res) => {
+
+// router.get('/user/GoogleAuth', (req, res) => {
+//     if (req.user) {
+//         res.send(req.user);
+//     } else {
+//         res.status(401).send('Unauthorized!!');
+//     }
+// });
+
+// router.get("/dashboard/:id", (req, res) => {
+//         res.send("hello hooman");
+//         console.log(req.user);
+//        // console.log(res);
+// })
+
+router.get("/user/googleAuth", (req, res) => {
+    console.log(req.user)
     if (req.user) {
         res.send(req.user);
     } else {

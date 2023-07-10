@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/index";
 import { Landing } from "./pages/Landing";
+import { BlogCreate } from "./pages/Create-Blog";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
      <Routes>
       <Route exact path="/" element={<Landing/>} />
       <Route exact path="/dashboard/:id" element={<Dashboard/>} />
+      <Route exact path="/:id/blog-create" element={<BlogCreate/>} />
      </Routes>
     
      </div>
