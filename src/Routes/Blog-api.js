@@ -17,7 +17,7 @@ router.get("/blog-posts", async (req, res) => {
     }
     catch (error) {
         console.error('Error retrieving blog post:', error);
-        res.status(500).json({ error: 'Server error' });
+        res.status(500).json({ error: 'Server error!!' });
       }
 
 }); 

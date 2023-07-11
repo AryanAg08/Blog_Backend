@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getBlogs } from "../utils/GetBlogs";
 
-
-
-
-export function BlogCreate({
+export function BlogDisplay({
    history
 }) {
 
@@ -28,10 +25,10 @@ useEffect(() => {
       
     FetchPost();
 
-}, []);
+}, [Id]);
 
 if (!post) {
-    return <div>No Posts to display!!!</div>
+    return <div>No Posts to display!!!</div> 
 }
 
     return (

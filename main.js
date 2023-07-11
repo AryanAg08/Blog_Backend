@@ -23,6 +23,7 @@ app.use(express.json());
 
 app.use("/img", ImgRoutes);
 app.use("/api", ApiRoute);
+
 app.use(
     cors({
         origin: "http://localhost:3000",
