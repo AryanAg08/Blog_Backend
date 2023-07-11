@@ -2,12 +2,12 @@ const router = require("express").Router();
 
 const Blog_post = require("../Models/3.BlogPosts");
 
-router.get("/api/blog-posts", async (req, res) => {
+router.get("/blog-posts", async (req, res) => {
     const ID = req.query.id;
 
     try {
         const post = await Blog_post.find({
-            id: ID
+            id: ID,
         });
         if (!post) {
             return res.status(404).json({ error: 'Blog post not found' });
@@ -20,4 +20,8 @@ router.get("/api/blog-posts", async (req, res) => {
         res.status(500).json({ error: 'Server error' });
       }
 
-})
+}); 
+
+
+
+module.exports = router;

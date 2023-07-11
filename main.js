@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5001;
 const cookiesession = require("cookie-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
+const ApiRoute = require("./src/Routes/Blog-api");
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/img", ImgRoutes);
-
+app.use("/api", ApiRoute);
 app.use(
     cors({
         origin: "http://localhost:3000",
