@@ -20,7 +20,13 @@ router.get("/blog-posts", async (req, res) => {
         res.status(500).json({ error: 'Server error!!' });
       }
 
-}); 
+});
+
+router.post("/blog-create", (req, res) => {
+    console.log(req.body);
+
+    res.json({ code: 200, status: "Message Sent"});
+})
 
 
 
