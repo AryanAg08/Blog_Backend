@@ -5,10 +5,16 @@ export function BlogCreate({
     history
 }) {
 
+    const pagelink = window.location.href;
+var Link = pagelink.split(/[/]+/)
+const Id = Link[2]
+
+
     const BlogDetails = {
         Title: "",
         Author: "",
         Content: "",
+        id: "",
     }
     const [blogDetails, setBlogDetails] = useState(BlogDetails);
     const [buttonText, setButtonText] = useState('send');
@@ -22,6 +28,7 @@ export function BlogCreate({
     }
 
     const handleSubmit = async (e) => {
+        blogDetails.id = Id;
         e.preventDefault();
         setButtonText("Saving...");
         let response = await fetch("http://localhost:5001/api/blog-create", {
@@ -55,7 +62,7 @@ export function BlogCreate({
                         <input type="text" value={blogDetails.Author} placeholder="Author of the Blog" onChange={(e) => onFormUpdate('Author', e.target.value)} />
                         </Col>
                         <Col size={12} className="px-1">
-                      <textarea rows="6" value={blogDetails.Content} placeholder="Content" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
+                      <textarea rows="10" value={blogDetails.Content} placeholder="Content of the Blog" onChange={(e) => onFormUpdate('Content', e.target.value)}></textarea>
                       <button type="submit"><span>{buttonText}</span></button>
                     </Col>
                     {

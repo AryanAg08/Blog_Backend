@@ -43,6 +43,7 @@ const [user, setUser] = react.useState({
     const Img = user.picture;
     const Id = user.id
     const linkkk = "/" + Id + "/blog-create";
+    const Post = "/" + Id + "/blog-view";
 
     return !loading && (
         <>
@@ -52,6 +53,7 @@ const [user, setUser] = react.useState({
          <h1>Img: {Img}</h1>
 
          <a href= {linkkk} ><button>Create My Post</button></a>
+         <a href= {Post} ><button>Posts</button></a>
 
         </>
     );

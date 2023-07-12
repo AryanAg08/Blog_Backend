@@ -13,8 +13,8 @@ function App() {
      <Routes>
       <Route exact path="/" element={<Landing/>} />
       <Route exact path="/dashboard/:id" element={<Dashboard/>} />
-      <Route exact path="/:id/blog-create" element={<BlogDisplay/>} />
-      <Route exact path="/create" element={< BlogCreate/>} />
+      <Route exact path="/:id/blog-view" element={<BlogDisplay/>} />
+      <Route exact path="/:id/blog-create" element={< BlogCreate/>} />
      </Routes>
     
      </div>
