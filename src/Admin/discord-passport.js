@@ -1,5 +1,5 @@
 const passport = require("passport");
-const DiscordAuth = require("passport-discord");
+const DiscordStrategy = require("passport-discord").Strategy;
 const DAuth = require("../Models/2.DiscordAuth");
 
 passport.serializeUser((user, done) => {
@@ -17,7 +17,7 @@ passport.deserializeUser( async (id, done) => {
 });
 
 passport.use(
-    new DiscordAuth({
+    new DiscordStrategy({
       clientID: process.env.DiscordClient_Id,
       clientSecret: process.env.DiscordClient_secret,
       callbackURL: process.env.DiscordCallback,
@@ -25,7 +25,7 @@ passport.use(
     }, async (accessToken, refreshToken, profile, done) => {
         const { id, username, avatar, email} = profile;
         try {
-            console.log(profile);
+           console.log(profile);
             const finduser = await DAuth.findOneAndUpdate({
                 id: id,
             },{

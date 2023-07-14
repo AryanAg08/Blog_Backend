@@ -21,13 +21,11 @@ mongoose.connect(process.env.mongo, {
 app.use(cors());
 app.use(express.json());
 
-app.use("/img", ImgRoutes);
-app.use("/api", ApiRoute);
 
 app.use(
     cors({
         origin: "http://localhost:3000",
-      //  methods: "GET,POST,PUT,DELETE",
+        // methods: "GET,POST,PUT,DELETE",
         credentials: true,
         //optionsSuccessStatus: 200,
     })
@@ -35,7 +33,7 @@ app.use(
 
 app.use(
     cookiesession({
-        name: "session",
+        name: "Sessions",
         keys: ["AryaAg"],
         maxAge: 24 * 60 * 60 * 100,
     })
@@ -48,6 +46,8 @@ app.use(passport.session());
 
 app.use("/", routes);
 
+app.use("/img", ImgRoutes);
+app.use("/api", ApiRoute);
 
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}!!`));

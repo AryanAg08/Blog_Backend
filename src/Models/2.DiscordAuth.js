@@ -4,6 +4,7 @@ const DAuth = new mongo.Schema({
     id: {
         type: String,
         required: true,
+        unique: true,
     },
     name: {
         type: String,

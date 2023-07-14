@@ -4,16 +4,16 @@ require("../Admin/passport"); // imp;
 const passport = require("passport");
 require("../Admin/discord-passport"); // imp;
 
-router.get("/home", async (req, res) => {
-    res.send("Hello World!!");
-    console.log(req.user);
-})
+// router.get("/home", async (req, res) => {
+//     res.send("Hello World!!");
+//     console.log(req.user);
+// })
 
 
 router.get("/google", passport.authenticate("google"));
 
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
-    res.redirect(`http://localhost:3000/dashboard/${req.user.id}`);
+    res.redirect(`http://localhost:3000/dashboard/g/${req.user.id}`);
 });
 
 
@@ -34,7 +34,11 @@ router.get("/google/callback", passport.authenticate("google"), (req, res) => {
 router.get("/user/googleAuth", (req, res) => {
     console.log(req.user)
     if (req.user) {
-        res.send(req.user);
+        setTimeout(() => {
+            res.send(req.user);
+        }, 
+        4000);
+        //res.send(req.user);
     } else {
         res.status(401).send('Unauthorized!!');
     }
@@ -42,17 +46,18 @@ router.get("/user/googleAuth", (req, res) => {
 
 router.get("/logout", (req, res) => {
     req.logOut();
-    res.redirect(process.env.Client_Url);
+    res.redirect("http://localhost:3000");
 });
 
 router.get("/discord", passport.authenticate("discord"));
 
-router.get("/discord/callback", passport.authenticate('discord'), (req, res) => {
+router.get("/discord/callback", passport.authenticate("discord"), (req, res) => {
     // res.send("Hello this is discord auth!!");
-    res.redirect(`http://localhost:3000/dashboard/${req.user.id}`);
+    res.redirect(`http://localhost:3000/dashboard/d/${req.user.id}`);
 });
 
-router.get("/user/discordAuth", (req, res) => {
+router.get("/user/discordAuth", async (req, res) => {
+     console.log(req.user) ;
     if (req.user) {
         res.send(req.user);
     } else {

@@ -8,7 +8,6 @@ export function BlogDisplay({
 const pagelink = window.location.href;
 var Link = pagelink.split(/[/]+/)
 const Id = Link[2]
-
 const [post, setPost] = useState(null);
 
 useEffect(() => {
@@ -25,7 +24,7 @@ useEffect(() => {
       
     FetchPost();
 
-}, [Id]);
+}, []);
 
 if (!post) {
     return <div>No Posts to display!!!</div> 

@@ -1,8 +1,8 @@
 import react from "react";
-import { getUserdetailsGoogle } from "../utils/googleAuth";
+//import { getUserdetailsGoogle } from "../utils/googleAuth";
 import { getUserdetailsDiscord } from "../utils/discordAuth";
 
-export function Dashboard({
+export function DiscDashboard({
     history
 }) {
 const [user, setUser] = react.useState({
@@ -17,6 +17,7 @@ const [user, setUser] = react.useState({
     // react.useEffect( () => {
     //     getUserdetailsGoogle()
     //     .then(( { data } ) => {
+    //         if (!data) return;
     //         setUser(data);
     //         setLoding(false);
     //     }).catch ((err) => {
@@ -27,7 +28,9 @@ const [user, setUser] = react.useState({
 
     react.useEffect( () => {
         getUserdetailsDiscord()
-        .then( async ( { data }) => {
+        .then(( { data }) => {
+            //console.log(data);
+          //  if (!data) return;
             setUser(data);
             setLoding(false);
         }).catch ((err) => {
