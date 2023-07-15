@@ -11,6 +11,7 @@ router.get("/blog-posts", async (req, res) => {
         });
         if (!post) {
             return res.status(404).json({ error: 'Blog post not found' });
+            
           }
       
           res.json(post);
