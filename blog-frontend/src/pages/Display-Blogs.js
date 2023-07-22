@@ -14,8 +14,9 @@ useEffect(() => {
 
     const FetchPost = async () => {
         try {
+            console.log(Id)
             const response = await getBlogs(Id);
-
+             console.log(response);
             setPost(response.data);
         } catch (err) {
             console.log(err);
@@ -24,7 +25,7 @@ useEffect(() => {
       
     FetchPost();
 
-}, []);
+}, [Id]);
 
 if (!post) {
     return <div>No Posts to display!!!</div> 

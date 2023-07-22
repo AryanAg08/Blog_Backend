@@ -6,6 +6,7 @@ export function getBlogs(id) {
             params: {
                 id: id,
             },
+            withCredentials: true,
         })
     )
 }
