@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getBlogs } from "../utils/GetBlogs";
 
+
 export function BlogDisplay({
    history
 }) {
@@ -8,7 +9,7 @@ export function BlogDisplay({
 const pagelink = window.location.href;
 var Link = pagelink.split(/[/]+/)
 const Id = Link[2]
-const [post, setPost] = useState(null);
+const [post, setPost] = useState([]);
 
 useEffect(() => {
 
@@ -16,8 +17,11 @@ useEffect(() => {
         try {
             console.log(Id)
             const response = await getBlogs(Id);
+            console.log("Here is the response!!")
              console.log(response);
+             console.log(response.data.length);
             setPost(response.data);
+           
         } catch (err) {
             console.log(err);
         }
@@ -29,14 +33,19 @@ useEffect(() => {
 
 if (!post) {
     return <div>No Posts to display!!!</div> 
-}
+}   
 
     return (
         <div>
             <h1>Hello!! Welcome to the Blog creation!!</h1>
-            <h1>{post.title}</h1>
-      <p>{post.content}</p>
-      <p>Author: {post.author}</p>
+             <ul>
+                {post.map((posts, index) => (
+                    <li key={index}>
+                        <h2>{posts.title}</h2>
+                        <p>{posts.content}</p>
+                    </li>
+                ))}
+             </ul>
         </div>
     )
 }
