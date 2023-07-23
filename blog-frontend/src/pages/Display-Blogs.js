@@ -38,14 +38,14 @@ if (!post) {
     return (
         <div>
             <h1>Hello!! Welcome to the Blog creation!!</h1>
-             <ul>
+             <ol>
                 {post.map((posts, index) => (
                     <li key={index}>
                         <h2>{posts.title}</h2>
                         <p>{posts.content}</p>
                     </li>
                 ))}
-             </ul>
+             </ol>
         </div>
     )
 }
