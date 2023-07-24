@@ -128,9 +128,9 @@
 + Response 204
 
 
-## Certainly! Here's an updated breakdown of the components for your Node.js and React blogging platform:
+## Node.js and React blogging platform:
 
-Backend Components (Node.js):
+# Backend Components (Node.js):
 
 1. User Authentication: Handles user registration, login, and authentication using technologies like Passport.js or JSON Web Tokens (JWT).
 2. Blog Post API: Provides endpoints to create, retrieve, update, and delete blog posts.
@@ -157,3 +157,7 @@ These components represent the core features and functionalities of your bloggin
 Remember to establish communication between the frontend (React) and backend (Node.js) components using HTTP APIs or websockets to ensure seamless data exchange and real-time updates.
 
 Happy coding!
+
+
+# Done Things 
+ - 

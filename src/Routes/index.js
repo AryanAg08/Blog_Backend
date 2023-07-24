@@ -3,6 +3,7 @@ const router = require("express").Router();
 require("../Admin/passport"); // imp;
 const passport = require("passport");
 require("../Admin/discord-passport"); // imp;
+const U1 = require("../Models/4.user-Details");
 
 // router.get("/home", async (req, res) => {
 //     res.send("Hello World!!");
@@ -63,6 +64,31 @@ router.get("/user/discordAuth", async (req, res) => {
     } else {
         res.status(401).send('Unauthorized!!')
     }
+});
+
+
+router.post("/login", async (req, res) => {
+    console.log(req.body);
+    const { Email, Password } = req.body;
+
+    try {
+      const user = await U1.findOne({ Email });
+  
+      if (!user) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+  
+      if (user.Password !== Password) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+  
+       res.json({ message: 'Login successful', user });
+      //res.redirect("http://localhost:3000")
+    } catch (error) {
+      console.error('Login failed:', error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  
 })
 
 
