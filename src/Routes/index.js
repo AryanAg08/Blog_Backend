@@ -81,9 +81,8 @@ router.post("/login", async (req, res) => {
       if (user.Password !== Password) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
-  
-       res.json({ message: 'Login successful', user });
-      //res.redirect("http://localhost:3000")
+         res.redirect(`http://localhost:3000/dashboard/${user._id}`)
+       //res.json({ message: 'Login successful', user });
     } catch (error) {
       console.error('Login failed:', error);
       res.status(500).json({ error: 'Server error' });
