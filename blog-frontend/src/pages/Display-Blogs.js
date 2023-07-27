@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getBlogs } from "../utils/GetBlogs";
+import { getBlogs, deletePost } from "../utils/GetBlogs";
+import axios from "axios";
 
 
 export function BlogDisplay({
@@ -31,6 +32,18 @@ useEffect(() => {
 
 }, [Id]);
 
+// const deletePost = async (id) => {
+//     try {
+//         fetch(`http://localhost:5001/api/blog-delete?id=${id}`)
+//         .then(alert("Successfully Deleted!! Refresh the page"))
+//         .then(window.location.reload());
+//     }
+//     catch (err) {
+//         console.log(err);
+
+//     }
+// };
+
 if (!post) {
     return <div>No Posts to display!!!</div> 
 }   
@@ -43,6 +56,7 @@ if (!post) {
                     <li key={index}>
                         <h2>{posts.title}</h2>
                         <p>{posts.content}</p>
+                        <button onClick={() =>  deletePost(posts._id)}>Delete</button>
                     </li>
                 ))}
              </ol>

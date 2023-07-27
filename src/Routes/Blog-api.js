@@ -38,6 +38,12 @@ router.post("/blog-create", async (req, res) => {
      const B1 = await new Blog_post(Blog_Create).save();
 
 
+});
+
+router.get("/blog-delete", async (req, res) => {
+    const id = req.query.id;
+
+    console.log(id);
 })
 
 
