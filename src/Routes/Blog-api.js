@@ -43,7 +43,9 @@ router.post("/blog-create", async (req, res) => {
 router.get("/blog-delete", async (req, res) => {
     const id = req.query.id;
 
-    console.log(id);
+    const Blog_DElete = await Blog_post.findByIdAndDelete(id);
+    
+    console.log(Blog_DElete);
 })
 
 

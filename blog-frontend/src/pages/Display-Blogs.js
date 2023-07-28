@@ -12,6 +12,7 @@ var Link = pagelink.split(/[/]+/)
 const Id = Link[2]
 const [post, setPost] = useState([]);
 
+
 useEffect(() => {
 
     const FetchPost = async () => {
@@ -32,17 +33,7 @@ useEffect(() => {
 
 }, [Id]);
 
-// const deletePost = async (id) => {
-//     try {
-//         fetch(`http://localhost:5001/api/blog-delete?id=${id}`)
-//         .then(alert("Successfully Deleted!! Refresh the page"))
-//         .then(window.location.reload());
-//     }
-//     catch (err) {
-//         console.log(err);
 
-//     }
-// };
 
 if (!post) {
     return <div>No Posts to display!!!</div> 
@@ -63,3 +54,115 @@ if (!post) {
         </div>
     )
 }
+
+
+/**
+ * import React, { useEffect, useState } from "react";
+import { getBlogs, deletePost, editPost } from "../utils/GetBlogs";
+import axios from "axios";
+
+export function BlogDisplay({ history }) {
+  const pagelink = window.location.href;
+  var Link = pagelink.split(/[/]+/)
+  const Id = Link[2]
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        console.log(Id)
+        const response = await getBlogs(Id);
+        console.log("Here is the response!!");
+        console.log(response);
+        console.log(response.data.length);
+        setPost(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchPost();
+
+  }, [Id]);
+
+  const handleEdit = (index) => {
+    setPost((prevPost) => {
+      const updatedPost = [...prevPost];
+      updatedPost[index].isEditing = true;
+      return updatedPost;
+    });
+  };
+
+  const handleCancelEdit = (index) => {
+    setPost((prevPost) => {
+      const updatedPost = [...prevPost];
+      updatedPost[index].isEditing = false;
+      return updatedPost;
+    });
+  };
+
+  const handleSave = async (index) => {
+    const editedPost = post[index];
+    try {
+      await editPost(editedPost._id, {
+        title: editedPost.editableTitle,
+        content: editedPost.editableContent,
+      });
+      setPost((prevPost) => {
+        const updatedPost = [...prevPost];
+        updatedPost[index].isEditing = false;
+        return updatedPost;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleInputChange = (index, field, value) => {
+    setPost((prevPost) => {
+      const updatedPost = [...prevPost];
+      updatedPost[index][field] = value;
+      return updatedPost;
+    });
+  };
+
+  if (!post) {
+    return <div>No Posts to display!!!</div>
+  }
+
+  return (
+    <div>
+      <h1>Hello!! Welcome to the Blog creation!!</h1>
+      <ol>
+        {post.map((posts, index) => (
+          <li key={index}>
+            {posts.isEditing ? (
+              <>
+                <input
+                  type="text"
+                  value={posts.editableTitle || posts.title}
+                  onChange={(e) => handleInputChange(index, 'editableTitle', e.target.value)}
+                />
+                <textarea
+                  value={posts.editableContent || posts.content}
+                  onChange={(e) => handleInputChange(index, 'editableContent', e.target.value)}
+                />
+                <button onClick={() => handleSave(index)}>Save</button>
+                <button onClick={() => handleCancelEdit(index)}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <h2>{posts.title}</h2>
+                <p>{posts.content}</p>
+                <button onClick={() => handleEdit(index)}>Edit</button>
+                <button onClick={() => deletePost(posts._id)}>Delete</button>
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+ */
