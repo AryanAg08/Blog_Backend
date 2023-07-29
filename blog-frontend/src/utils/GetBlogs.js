@@ -20,3 +20,12 @@ export async function deletePost(_id) {
          .then(window.location.reload())
     )
 }
+
+export const editPost = async (postId, updatedPostData) => {
+    try {
+      const response = await axios.put(`http://localhost:5001/api/blog-edit/${postId}`, updatedPostData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
