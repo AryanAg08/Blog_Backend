@@ -105,20 +105,19 @@ export function BlogDisplay({ history }) {
     });
   };
   const handleSave = async (index) => {
-    const editedPost = post[index];
-    try {
-      await editPost(editedPost._id, {
-        title: editedPost.editableTitle,
-        content: editedPost.editableContent,
+    console.log(index._id);
+      let response = await fetch(`http://localhost:5001/api/blog-edit?id=${index._id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        }, 
+        body: JSON.stringify(index),
       });
-      setPost((prevPost) => {
-        const updatedPost = [...prevPost];
-        updatedPost[index].isEditing = false;
-        return updatedPost;
-      });
-    } catch (err) {
-      console.log(err);
-    }
+
+      let result = await response.json();
+      if (result.code === 200) {
+        window.location.reload();
+      }
   }
   const handleInputChange = (index, field, value) => {
     setPost((prevPost) => {
@@ -149,7 +148,7 @@ export function BlogDisplay({ history }) {
                   value={posts.editableContent || posts.content}
                   onChange={(e) => handleInputChange(index, 'editableContent', e.target.value)}
                 />
-                <button onClick={() => handleSave(posts._id)}>Save</button>
+                <button onClick={() => handleSave(posts)}>Save</button>
                 <button onClick={() => handleCancelEdit(index)}>Cancel</button>
               </>
             ) : (

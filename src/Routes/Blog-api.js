@@ -48,10 +48,14 @@ router.get("/blog-delete", async (req, res) => {
     console.log(Blog_DElete);
 })
 
-router.get("/blog-edit/:id", (req, res) => {
+router.post("/blog-edit", (req, res) => {
     const id = req.query.id;
 
     console.log(id);
+    console.log(req.body);
+
+    res.json({ code: 200, status: "Message Sent"});
+
 })
 
 

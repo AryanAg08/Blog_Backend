@@ -21,11 +21,11 @@ export async function deletePost(_id) {
     )
 }
 
-export const editPost = async (postId, updatedPostData) => {
-    try {
-      const response = await axios.put(`http://localhost:5001/api/blog-edit/${postId}`, updatedPostData);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+export async function editPost (postId, updatedPostData) {
+    return (
+       axios.get(`http://localhost:5001/api/blog-edit?id=${postId}`, updatedPostData)
+       .then(alert("Edited Blog!!"))
+       .then(window.location.reload())
+      
+    )
+  }
