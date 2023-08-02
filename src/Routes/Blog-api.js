@@ -48,13 +48,38 @@ router.get("/blog-delete", async (req, res) => {
     console.log(Blog_DElete);
 })
 
-router.post("/blog-edit", (req, res) => {
+router.post("/blog-edit", async (req, res) => {
     const id = req.query.id;
-
+     const Title = req.body.editableTitle;
+     const Body = req.body.editableContent;
+     
     console.log(id);
     console.log(req.body);
 
+    const U1 = await Blog_post.findByIdAndUpdate({
+        _id: id,
+    }, {
+         title: Title,
+         content: Body,
+    }, {
+        upsert: true,
+    })
+
     res.json({ code: 200, status: "Message Sent"});
+/**
+ * {
+  _id: '64c55f70709c98e135ddc9d6',
+  id: '116292893619193068027',
+  title: 'Hello Wrold2`',
+  author: 'Aryan ',
+  content: 'Hello this is trying blog to be edit',
+  __v: 0,
+  isEditing: true,
+  editableTitle: 'Hello World 1',
+  editableContent: 'Hello this is trying blog to be edit'
+}
+ */
+
 
 })
 
