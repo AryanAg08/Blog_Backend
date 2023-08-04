@@ -133,7 +133,7 @@
 # Backend Components (Node.js):
 
 1. User Authentication: Handles user registration, login, and authentication using technologies like Passport.js or JSON Web Tokens (JWT).
-2. Blog Post API: Provides endpoints to create, retrieve, update, and delete blog posts.
+2. Blog Post API: Provides endpoints to create, retrieve, update, and delete blog posts. ☑️
 3. Comment API: Manages comment creation, retrieval, and interaction with blog posts.
 4. Category API: Handles CRUD operations for managing categories associated with blog posts.
 5. Tag API: Manages CRUD operations for handling tags associated with blog posts.
