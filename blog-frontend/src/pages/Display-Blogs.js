@@ -67,7 +67,7 @@ export function BlogDisplay({ history }) {
       return updatedPost;
     });
   };
-
+console.log(post);
   if (!post) {
     return <div>No Posts to display!!!</div>
   }
@@ -94,7 +94,7 @@ export function BlogDisplay({ history }) {
               </>
             ) : (
               <>
-                <h2>{posts.title}</h2>
+                <h2><a href={"/posts/" + posts._id}>{posts.title} </a></h2>
                 <p>{posts.content}</p>
                 <button onClick={() => handleEdit(index)}>Edit</button>
                 <button onClick={() => deletePost(posts._id)}>Delete</button>

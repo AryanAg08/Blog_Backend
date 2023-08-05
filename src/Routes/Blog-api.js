@@ -40,6 +40,32 @@ router.post("/blog-create", async (req, res) => {
 
 });
 
+router.get("/get-blog", async (req, res) => {
+    const id = req.query.id;
+
+
+    try {
+    const G1 = await Blog_post.findById({_id: id});
+
+    if (G1) {
+        const Data = await G1;
+
+        res.json(Data);
+    }
+    else {
+        res.json({code: 404, status: "Not found ❓"});
+    }
+} 
+catch (err) {
+    console.log(err);
+
+    res.json({code: 404, status: "Not Found ?"});
+}
+
+
+    //res.json({code: 200 , status: "Done 👍"});
+})
+
 router.get("/blog-delete", async (req, res) => {
     const id = req.query.id;
 

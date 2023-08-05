@@ -142,9 +142,12 @@
 
 # Frontend Components (React.js):
 
-1. User Authentication: Includes components for user registration, login, and authentication forms.
-2. Blog Post List: Displays a list of blog posts, including their titles, excerpts, and authors.
+1. User Authentication: Includes components for user registration, login, and authentication forms. 
+  - With google Done ☑️
+2. Blog Post List: Displays a list of blog posts, including their titles, excerpts, and authors. 
+  - Particular User done ☑️
 3. Blog Post Details: Shows the full content of a selected blog post, including comments and related information.
+ 
 4. Comment Section: Enables users to view and leave comments on blog posts.
 5. Category Navigation: Allows users to browse blog posts by categories.
 6. Tag Cloud: Displays a tag cloud representing popular tags, allowing users to filter posts by tags.
@@ -161,3 +164,12 @@ Happy coding!
 
 # Done Things 
  - 
+
+# idea
+ - When opening a particular blog use its object Id as a forward address. To display the full blog!! 
+ - You can fetch the data accordingly. And display.
+ - Comments are being sent as a object. That contains properties: 
+    - Author Name
+    - Date - time
+    - Likes - dislikes
+    - Their comment 

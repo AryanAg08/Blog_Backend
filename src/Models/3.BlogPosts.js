@@ -16,6 +16,14 @@ const BP = new mongo.Schema({
     content: {
         type: String,
         required: false,
+    },
+    Comment: {
+        type: [Object],
+        required: false,
+    },
+    HashTag: {
+       type: String,
+       required: false,
     }
 });
 
