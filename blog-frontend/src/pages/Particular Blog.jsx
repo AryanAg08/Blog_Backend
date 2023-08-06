@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GETPartBlog } from "../utils/GetParticularBlog";
+import { ViewsCount } from "../utils/CountViews";
 
 
 export function DisplayParticularBlog () {
@@ -9,6 +10,7 @@ export function DisplayParticularBlog () {
     content: "",
     Comment: [],
     author: "",
+    _id: "",
  });
 const Link = window.location.href.split(/[/]+/);
 const Id = Link[3];
@@ -22,7 +24,7 @@ const [loading, setLoding] = React.useState( true );
 
                 const Initialse = BlogResponse.data;
                    
-                setPost(Initialse);
+                setPost(Initialse);  
                  setLoding(false);
             }
             catch (err) {
@@ -32,8 +34,14 @@ const [loading, setLoding] = React.useState( true );
         };
 
         fetchPost();
-    }, [Id])
 
+    }, [Id])
+       if (post._id != "") {
+    setTimeout(async () => {
+       await   ViewsCount(post._id);
+    }, 1000) // runs after 100 seconds 
+       }
+    
     const Author = post.author;
     const Content = post.content;
     const Title = post.title;

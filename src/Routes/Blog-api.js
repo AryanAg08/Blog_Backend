@@ -66,6 +66,25 @@ catch (err) {
     //res.json({code: 200 , status: "Done 👍"});
 })
 
+ router.get("/blog-visitCount", async (req, res) => {
+    const id = req.query.id;
+   try {
+    const inc = await Blog_post.findByIdAndUpdate({
+        _id: `${id}`,
+    },{
+        $inc: {
+            views: 1
+        },
+    },{
+        upsert: true,
+    });
+    console.log(inc);
+} catch (err) {
+    console.log(err);
+}
+ });
+ 
+
 router.get("/blog-delete", async (req, res) => {
     const id = req.query.id;
 

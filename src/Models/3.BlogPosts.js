@@ -24,7 +24,28 @@ const BP = new mongo.Schema({
     HashTag: {
        type: String,
        required: false,
-    }
+    },
+     views: {
+        type: Number,
+        required: false,
+     },
+     likes: {
+        type: Number,
+        required: false,
+     },
+     dislikes: {
+        type: Number,
+        required: false,
+     },
+     Trending: {
+        type: Number,
+        required: false,
+     },
+     CreatedTimeStamp: {
+        type: String,
+        required: false,
+     },
+     
 });
 
 module.exports = mongo.model("Blog-Posts", BP);
