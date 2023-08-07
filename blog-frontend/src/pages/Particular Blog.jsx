@@ -37,9 +37,15 @@ const [loading, setLoding] = React.useState( true );
 
     }, [Id])
        if (post._id != "") {
-    setTimeout(async () => {
-       await   ViewsCount(post._id);
-    }, 1000) // runs after 100 seconds 
+     window.sessionStorage.setItem("user", post._id);
+
+        setTimeout(async () => {
+            const getUser = window.sessionStorage.getItem("user");
+
+            if (getUser === post._id) {
+                await ViewsCount(post._id);
+            }
+         }, 10000) // runs after 10 seconds 
        }
     
     const Author = post.author;
