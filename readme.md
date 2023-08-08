@@ -137,7 +137,7 @@
 3. Comment API: Manages comment creation, retrieval, and interaction with blog posts.
 4. Category API: Handles CRUD operations for managing categories associated with blog posts.
 5. Tag API: Manages CRUD operations for handling tags associated with blog posts.
-6. Search API: Implements search functionality for searching and filtering blog posts.
+6. Search API: Implements search functionality for searching and filtering blog posts. 
 7. Customization API: Provides endpoints to customize blog appearance, themes, layouts, etc.
 
 # Frontend Components (React.js):

@@ -22,5 +22,7 @@ var j = schedule.scheduleJob("0 0 0 * * *", async function () {
             upsert: true,
           });
        }
-})
+});
+
+
 }
