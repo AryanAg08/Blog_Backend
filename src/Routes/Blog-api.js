@@ -113,6 +113,26 @@ router.post("/blog-edit", async (req, res) => {
     res.json({ code: 200, status: "Message Sent"});
 
     
+router.get("/get-Comments", async (req, res) => {
+    
+    const id = req.query.id;
+
+    const U1 = await Blog_post.findById({
+        _id: id,
+    });
+
+    if (U1 ) { 
+        for (qq of U1) {
+            const Comments = qq.Comment
+
+            res.json(Comments);
+        }
+    }
+    else {
+        res.json({ code : 404, status: "Not Found!!"});
+    }
+})
+
 /**
  * {
   _id: '64c55f70709c98e135ddc9d6',

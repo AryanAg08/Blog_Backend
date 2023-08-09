@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getBlogs, deletePost } from "../utils/GetBlogs";
+import { getComments } from "../utils/Get-comments";
 
 export function BlogDisplay({ history }) {
   const pagelink = window.location.href;
   var Link = pagelink.split(/[/]+/)
   const Id = Link[2]
   const [post, setPost] = useState([]);
+  const [Comments, setComment] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -26,6 +28,15 @@ export function BlogDisplay({ history }) {
       }
     };
 
+    const fetchComments = async () => {
+      const Response = await getComments(Id);
+
+      const initializeComments = Response.data;
+
+      console.log(initializeComments)
+    }
+
+    fetchComments();
     fetchPost();
   }, [Id])
 
@@ -89,6 +100,10 @@ console.log(post);
                   value={posts.editableContent || posts.content}
                   onChange={(e) => handleInputChange(index, 'editableContent', e.target.value)}
                 />
+                <>
+                <h2>Comments: </h2>
+                
+              </>
                 <button onClick={() => handleSave(posts)}>Save</button>
                 <button onClick={() => handleCancelEdit(index)}>Cancel</button>
               </>

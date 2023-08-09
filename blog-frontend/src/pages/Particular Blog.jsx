@@ -16,6 +16,14 @@ const Link = window.location.href.split(/[/]+/);
 const Id = Link[3];
 
 const [loading, setLoding] = React.useState( true );
+const [comment, setComment] = React.useState(false);
+const [addcomments, setAddComments] = React.useState({
+    Author: "",
+    TimeStamp: "",
+    CommentData: "",
+    Likes: "",
+    Dislikes: "",
+}) 
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -35,8 +43,21 @@ const [loading, setLoding] = React.useState( true );
 
         fetchPost();
 
+
     }, [Id])
-       if (post._id != "") {
+      const EnableComments = async () => {
+           setComment(true);
+      }
+        
+      let author;
+      let commentcontent;
+       
+      const SaveComment = async () => {
+        console.log("Saved!!")
+      }
+
+
+    if (post._id != "") {
      window.sessionStorage.setItem("user", post._id);
 
         setTimeout(async () => {
@@ -57,7 +78,27 @@ const [loading, setLoding] = React.useState( true );
         <h1>{Title}</h1>
         <p>{Content}</p>
         <h3> Written by: {Author}</h3>
+         <div>
+             <h2> Comments:</h2>
+             <button onClick={() => EnableComments()}>Add comment</button>
+
+             {comment ? (
+                    <>
+                     <input
+                     type="text"
+                     value={author}
+                     />
+
+                     <button onClick={() => SaveComment()}>Save</button>
+                    </>
+             ) : (
+                <>
+                These are comments. 
+                </>
+             )}
+         </div>
         </>
+
 
     );
 }
