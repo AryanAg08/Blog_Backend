@@ -44,6 +44,9 @@ const [user, setUser] = react.useState({
     const linkkk = "/" + Id + "/blog-create";
     const Post = "/" + Id + "/blog-view";
 
+
+    window.sessionStorage.setItem("UserName", name);
+    
     return !loading && (
         <>
         <h1>hello </h1>

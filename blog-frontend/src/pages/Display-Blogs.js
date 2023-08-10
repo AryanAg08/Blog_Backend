@@ -28,15 +28,15 @@ export function BlogDisplay({ history }) {
       }
     };
 
-    const fetchComments = async () => {
-      const Response = await getComments(Id);
+    // const fetchComments = async () => {
+    //   const Response = await getComments(Id);
 
-      const initializeComments = Response.data;
+    //   const initializeComments = Response.data;
 
-      console.log(initializeComments)
-    }
+    //   console.log(initializeComments)
+    // }
 
-    fetchComments();
+    // fetchComments();
     fetchPost();
   }, [Id])
 

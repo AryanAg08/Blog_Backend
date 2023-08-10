@@ -19,15 +19,18 @@ const Id = Link[3];
 const CommentDetails = {
     Author: "",
     TimeStamp: "",
-    Likes: "",
-    Dislikes: "",
     CommentContent: "",
+    id: "",
 }
 
 const [loading, setLoding] = React.useState( true );
 const [comment, setComment] = React.useState(false);
-const [addcomments, setAddComments] = React.useState(CommentDetails) 
-
+const [addcomments, setAddComments] = React.useState(CommentDetails);
+const [showComments, setShowComments] = React.useState({
+    Author: "",
+    Time: "",
+    Content: "",
+});
 
 
     useEffect(() => {
@@ -55,7 +58,11 @@ const [addcomments, setAddComments] = React.useState(CommentDetails)
       }
        
       const SaveComment = async (e) => {
-       // setComment(false);
+        setComment(false);
+        addcomments.Author = window.sessionStorage.getItem("UserName");
+        addcomments.TimeStamp = new Date().getTime();
+        addcomments.id = post._id;
+
             e.preventDefault();
            let SendComment = await fetch(`http://localhost:5001/Commentapi/CommentAdd?id=${Id}`, {
             method: "POST",
@@ -74,6 +81,7 @@ const [addcomments, setAddComments] = React.useState(CommentDetails)
         console.log()
       }
 
+      
 
     // if (post._id !== "") {
     //  window.sessionStorage.setItem("user", post._id);
@@ -107,6 +115,10 @@ const [addcomments, setAddComments] = React.useState(CommentDetails)
         <h3> Written by: {Author}</h3>
          <div>
              <h2> Comments:</h2>
+             {
+
+             }
+
              <button onClick={() => EnableComments()}>
                 Add comment</button>
 
