@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GETPartBlog } from "../utils/GetParticularBlog";
 import { ViewsCount } from "../utils/CountViews";
+import { Col, Row } from "react-bootstrap";
 
 
 export function DisplayParticularBlog () {
@@ -15,15 +16,19 @@ export function DisplayParticularBlog () {
 const Link = window.location.href.split(/[/]+/);
 const Id = Link[3];
 
-const [loading, setLoding] = React.useState( true );
-const [comment, setComment] = React.useState(false);
-const [addcomments, setAddComments] = React.useState({
+const CommentDetails = {
     Author: "",
     TimeStamp: "",
-    CommentData: "",
     Likes: "",
     Dislikes: "",
-}) 
+    CommentContent: "",
+}
+
+const [loading, setLoding] = React.useState( true );
+const [comment, setComment] = React.useState(false);
+const [addcomments, setAddComments] = React.useState(CommentDetails) 
+
+
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -48,30 +53,52 @@ const [addcomments, setAddComments] = React.useState({
       const EnableComments = async () => {
            setComment(true);
       }
-        
-      let author;
-      let commentcontent;
        
-      const SaveComment = async () => {
-        console.log("Saved!!")
+      const SaveComment = async (e) => {
+       // setComment(false);
+            e.preventDefault();
+           let SendComment = await fetch(`http://localhost:5001/Commentapi/CommentAdd?id=${Id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(addcomments),
+           });
+
+           let result = await SendComment.json();
+
+           if (result.code === 200) {
+            alert("added comment!!");
+           }
+
+        console.log()
       }
 
 
-    if (post._id != "") {
-     window.sessionStorage.setItem("user", post._id);
+    // if (post._id !== "") {
+    //  window.sessionStorage.setItem("user", post._id);
 
-        setTimeout(async () => {
-            const getUser = window.sessionStorage.getItem("user");
+    //     setTimeout(async () => {
+    //         const getUser = window.sessionStorage.getItem("user");
 
-            if (getUser === post._id) {
-                await ViewsCount(post._id);
-            }
-         }, 10000) // runs after 10 seconds 
-       }
+    //         if (getUser === post._id) {
+    //             const a = await ViewsCount(post._id);
+    //             console.log(a);
+    //         }
+    //      }, 10000) // runs after 10 seconds 
+    //    }
     
     const Author = post.author;
     const Content = post.content;
     const Title = post.title;
+
+
+    const handleInputChange = (category, value) => {
+         setAddComments({
+            ...addcomments,
+            [category]: value
+         });
+    }
 
     return !loading && (
         <>
@@ -80,20 +107,22 @@ const [addcomments, setAddComments] = React.useState({
         <h3> Written by: {Author}</h3>
          <div>
              <h2> Comments:</h2>
-             <button onClick={() => EnableComments()}>Add comment</button>
+             <button onClick={() => EnableComments()}>
+                Add comment</button>
 
              {comment ? (
                     <>
-                     <input
-                     type="text"
-                     value={author}
-                     />
-
-                     <button onClick={() => SaveComment()}>Save</button>
+                    <form onSubmit={SaveComment}>
+                        <Row>
+                            <Col>
+                     <input type="text" value={addcomments.CommentContent} placeholder="Comment" onChange={(e) => handleInputChange('CommentContent', e.target.value)} />
+                    </Col>
+                     <button type="submit">Save</button>
+                     </Row>
+                     </form>
                     </>
              ) : (
                 <>
-                These are comments. 
                 </>
              )}
          </div>

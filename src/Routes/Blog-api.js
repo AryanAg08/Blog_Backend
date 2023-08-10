@@ -79,6 +79,8 @@ catch (err) {
         upsert: true,
     });
     console.log(inc);
+
+    res.json({code: 200, status: "message sent"})
 } catch (err) {
     console.log(err);
 }

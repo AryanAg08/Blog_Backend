@@ -4,6 +4,7 @@ const session = require("express-session");
 const cors = require("cors");
 const routes = require("./src/Routes");
 const ImgRoutes = require("./src/Routes/photos-routes");
+const CommentApi = require("./src/Routes/Comment-Api");
 const PORT = process.env.PORT || 5001;
 const cookiesession = require("cookie-session");
 const passport = require("passport");
@@ -48,6 +49,7 @@ app.use("/", routes);
 
 app.use("/img", ImgRoutes);
 app.use("/api", ApiRoute);
+app.use("/Commentapi", CommentApi);
 
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}!!`));
