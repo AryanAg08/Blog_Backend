@@ -176,3 +176,22 @@ Happy coding!
     - Date - time
     - Likes - dislikes
     - Their comment 
+
+# Category API 
+
+Category API
+|
+|-- GET /api/categories
+|   |-- Retrieve a list of all categories
+|
+|-- GET /api/categories/:id
+|   |-- Retrieve a specific category by ID
+|
+|-- POST /api/categories
+|   |-- Create a new category
+|
+|-- PUT /api/categories/:id
+|   |-- Update a category by ID
+|
+|-- DELETE /api/categories/:id
+|   |-- Delete a category by ID
