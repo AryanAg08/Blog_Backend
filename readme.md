@@ -134,8 +134,8 @@
 
 1. User Authentication: Handles user registration, login, and authentication using technologies like Passport.js or JSON Web Tokens (JWT).
 2. Blog Post API: Provides endpoints to create, retrieve, update, and delete blog posts. ☑️
-3. Comment API: Manages comment creation, retrieval, and interaction with blog posts.
-4. Category API: Handles CRUD operations for managing categories associated with blog posts.
+3. Comment API: Manages comment creation, retrieval, and interaction with blog posts. ☑️
+4. Category API: Handles CRUD operations for managing categories associated with blog posts. 
 5. Tag API: Manages CRUD operations for handling tags associated with blog posts.
 6. Search API: Implements search functionality for searching and filtering blog posts. 
 7. Customization API: Provides endpoints to customize blog appearance, themes, layouts, etc.
@@ -146,9 +146,10 @@
   - With google Done ☑️
 2. Blog Post List: Displays a list of blog posts, including their titles, excerpts, and authors. 
   - Particular User done ☑️
-3. Blog Post Details: Shows the full content of a selected blog post, including comments and related information.
+3. Blog Post Details: Shows the full content of a selected blog post, including comments and related information. ☑️
  
-4. Comment Section: Enables users to view and leave comments on blog posts.
+4. Comment Section: Enables users to view and leave comments on blog posts. ☑️
+
 5. Category Navigation: Allows users to browse blog posts by categories.
 6. Tag Cloud: Displays a tag cloud representing popular tags, allowing users to filter posts by tags.
 7. Search Functionality: Implements a search bar for users to search for specific blog posts.
@@ -163,6 +164,8 @@ Happy coding!
 
 
 # Done Things 
+ - Blog API
+ - Comment API 
  - 
 
 # idea

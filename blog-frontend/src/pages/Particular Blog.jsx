@@ -47,6 +47,9 @@ const [showComments, setShowComments] = React.useState({
                 console.log(err);
                 setLoding(false);
             }
+
+
+
         };
 
         fetchPost();
@@ -77,11 +80,9 @@ const [showComments, setShowComments] = React.useState({
            if (result.code === 200) {
             alert("added comment!!");
            }
-
-        console.log()
       }
 
-      
+     console.log(post.Comment);
 
     // if (post._id !== "") {
     //  window.sessionStorage.setItem("user", post._id);
@@ -108,6 +109,11 @@ const [showComments, setShowComments] = React.useState({
          });
     }
 
+    function ConvertDate(timestamp) {
+        const Datee = new Date(timestamp);
+        return Datee;
+    }
+
     return !loading && (
         <>
         <h1>{Title}</h1>
@@ -116,7 +122,13 @@ const [showComments, setShowComments] = React.useState({
          <div>
              <h2> Comments:</h2>
              {
-
+               post.Comment.map((posts, index) => (
+                    <li key={index}>
+                        <h2>{posts.Content}</h2>
+                        {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(posts.TimeStamp)}
+                        <h4>{posts.Author}</h4>
+                    </li>
+               ))
              }
 
              <button onClick={() => EnableComments()}>
