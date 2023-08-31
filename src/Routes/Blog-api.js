@@ -4,6 +4,7 @@ const Blog_post = require("../Models/3.BlogPosts");
 
 router.get("/blog-posts", async (req, res) => {
     const ID = req.query.id;
+    console.log("backend!!");
     console.log(ID);
     try {
         const post = await Blog_post.find({

@@ -1,8 +1,9 @@
 require("dotenv").config();
 const router = require("express").Router();
 require("../Admin/passport"); // imp;
+require("../Admin/discord-passport"); 
 const passport = require("passport");
-require("../Admin/discord-passport"); // imp;
+// imp;
 const U1 = require("../Models/4.user-Details");
 
 // router.get("/home", async (req, res) => {
@@ -57,8 +58,10 @@ router.get("/discord/callback", passport.authenticate("discord"), (req, res) => 
     res.redirect(`http://localhost:3000/dashboard/d/${req.user.id}`);
 });
 
-router.get("/user/discordAuth", async (req, res) => {
-     console.log(req.user) ;
+router.get("/discordAuth",  (req, res) => {
+    console.log("start")
+     console.log(req.user);
+     console.log("end");
     if (req.user) {
         res.send(req.user);
     } else {

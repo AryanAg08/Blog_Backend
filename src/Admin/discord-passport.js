@@ -20,12 +20,12 @@ passport.use(
     new DiscordStrategy({
       clientID: process.env.DiscordClient_Id,
       clientSecret: process.env.DiscordClient_secret,
-      callbackURL: process.env.DiscordCallback,
+      callbackURL: "/discord/callback",
       scope: ['identify', 'email'],
     }, async (accessToken, refreshToken, profile, done) => {
         const { id, username, avatar, email} = profile;
         try {
-           console.log(profile);
+        //    console.log(profile);
             const finduser = await DAuth.findOneAndUpdate({
                 id: id,
             },{

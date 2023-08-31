@@ -10,7 +10,7 @@ export function Landing({
 
              <a href="http://localhost:5001/google"> <button>Login with Google</button> </a>
              <br></br>
-             <a href="http://localhost:5001/discord"> <button>Login with Discord</button> </a>
+             {/* <a href="http://localhost:5001/discord"> <button>Login with Discord</button> </a> */}
         </div>
     )
 }

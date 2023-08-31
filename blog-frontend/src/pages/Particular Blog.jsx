@@ -79,6 +79,7 @@ const [showComments, setShowComments] = React.useState({
 
            if (result.code === 200) {
             alert("added comment!!");
+            window.location.reload();
            }
       }
 
@@ -109,28 +110,25 @@ const [showComments, setShowComments] = React.useState({
          });
     }
 
-    function ConvertDate(timestamp) {
-        const Datee = new Date(timestamp);
-        return Datee;
-    }
 
     return !loading && (
         <>
         <h1>{Title}</h1>
         <p>{Content}</p>
-        <h3> Written by: {Author}</h3>
+        <h3> Author: {Author}</h3>
          <div>
+            <ul>
              <h2> Comments:</h2>
              {
                post.Comment.map((posts, index) => (
-                    <li key={index}>
-                        <h2>{posts.Content}</h2>
+                    <li key={index}> 
+                    <h2>{posts.Content}</h2>
                         {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(posts.TimeStamp)}
                         <h4>{posts.Author}</h4>
                     </li>
                ))
              }
-
+                </ul>
              <button onClick={() => EnableComments()}>
                 Add comment</button>
 

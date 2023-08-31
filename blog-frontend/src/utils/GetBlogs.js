@@ -2,10 +2,7 @@ import axios from "axios";
 
 export async function getBlogs(id) {
     return (
-        axios.get('http://localhost:5001/api/blog-posts', {
-            params: {
-                id: id,
-            },
+        axios.get(`http://localhost:5001/api/blog-posts?id=${id}`, {
             withCredentials: true,
         })
     )
