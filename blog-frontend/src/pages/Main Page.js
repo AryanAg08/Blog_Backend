@@ -81,8 +81,7 @@ const [user, setUser] = react.useState({
     
     return !loading && (
         <>
-        <h1>hello </h1>
-         <h1>Hello {name}</h1>
+         <h1>User: {name}</h1>
          <h1>Email: {Email}</h1>
            <img  width="80px" src={Img}  alt="Profile"/>
            <br></br>
