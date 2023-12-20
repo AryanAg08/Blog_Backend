@@ -32,7 +32,7 @@ const [user, setUser] = react.useState({
             setUser(data);
             setLoding(false);
         }).catch ((err) => {
-            // history.push("/");
+            // history.push("/"); 
             setLoding(false);
         });
 

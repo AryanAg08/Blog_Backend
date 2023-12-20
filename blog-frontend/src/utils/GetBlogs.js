@@ -23,6 +23,5 @@ export async function editPost (postId, updatedPostData) {
        axios.get(`http://localhost:5001/api/blog-edit?id=${postId}`, updatedPostData)
        .then(alert("Edited Blog!!"))
        .then(window.location.reload())
-      
     )
   }
